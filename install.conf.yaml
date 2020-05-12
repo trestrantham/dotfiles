@@ -2,4 +2,55 @@
 
 - link:
 
+    ~/.Brewfile: Brewfile
+    ~/.tool-versions: tool-versions
 
+- shell:
+
+  - description: Setup macOS defaults
+    command: |
+      if [[ "$OSTYPE" == "darwin"* ]]; then
+        ./setup-macos.sh
+      fi
+
+  - description: Hush the last login prompt
+    command: touch ~/.hushlogin
+
+  - description: Install Homebrew
+    command: |
+      if [[ "$OSTYPE" == "darwin"* ]]; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      fi
+
+  - description: Install system Brewfile
+    command: |
+      if [[ "$OSTYPE" == "darwin"* ]]; then
+        brew bundle --global
+      fi
+
+  - description: Set shell to zsh
+    command: |
+      grep -qxF "$(which zsh)" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells
+      chsh -s $(which zsh)
+
+
+  - description: Install asdf plugins
+    command: |
+      asdf plugin list | grep -q erlang || {
+        asdf plugin add erlang
+      }
+      asdf plugin list | grep -q elixir || {
+        asdf plugin add elixir
+      }
+      asdf plugin list | grep -q golang || {
+        asdf plugin add golang
+      }
+      asdf plugin list | grep -q nodejs || {
+        asdf plugin add nodejs
+      }
+
+  - description: Import asdf nodejs OpenGPG keys
+    command: cd && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+  - description: Install asdf runtimes
+    command: cd && asdf install
