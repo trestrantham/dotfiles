@@ -7,7 +7,9 @@ brew 'git'
 brew 'gpg'
 brew 'mas'
 brew 'mysql'
+brew 'nvim'
 brew 'postgresql'
+brew 'openssl'
 brew 'redis'
 brew 'zsh'
 
@@ -16,6 +18,7 @@ cask 'alfred'
 cask 'bartender'
 cask 'brave-browser'
 cask 'insomnia'
+cask 'notion'
 cask 'rocket'
 cask 'spotify'
 cask 'tableplus'
@@ -26,6 +29,7 @@ mas '1Password 7', id: 1333542190
 mas 'Adblock Plus', id: 1432731683
 mas 'ColorSlurp', id: 1287239339
 mas 'Deliveries', id: 924726344
+mas 'Divvy', id: 413857545
 mas 'Fantastical', id: 975937182
 mas 'Slack', id: 803453959
 mas 'Telegram', id: 747648890

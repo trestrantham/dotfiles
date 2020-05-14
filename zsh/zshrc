@@ -1,0 +1,86 @@
+source ~/.zplug/init.zsh
+
+PURE_GIT_PULL=0
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=14"
+
+zplug "mafredri/zsh-async"
+# zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
+
+# Check for uninstalled plugins.
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load
+
+export CASE_SENSITIVE="true"
+
+unsetopt correct_all
+unsetopt correct
+
+setopt auto_cd
+
+#Allow rake commands to be run without escaping brackets
+unsetopt nomatch
+
+# Always reset terminal mode to original state after processes run
+ttyctl -f
+
+# Search history based on what's been typed with up and down arrow
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+# Disk space is free, save history
+export HISTSIZE=1000000
+export SAVEHIST=$HISTSIZE
+
+# Don't save duplicate commands in history
+setopt histignoredups
+
+export EDITOR=nvim
+
+source $HOME/.aliases.zsh
+
+export PATH=./bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:/opt/bin:$PATH
+
+# LS colors, made with http://geoff.greer.fm/lscolors/
+export LSCOLORS="exfxcxdxbxagadabagaxad"
+export LS_COLORS='di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=30;46:cd=0;43:su=30;41:sg=0;46:tw=30;40:ow=30;43:'
+export CLICOLOR=1
+
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# Set up FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# This lists using git-ls-tree... not great for creating new files
+# but very helpful for dotcom
+# export FZF_DEFAULT_COMMAND='
+#   git ls-tree -r --name-only HEAD ||
+#   fd --type f --hidden --follow --exclude .git'
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+if [ -x "$(command -v brew)" ]; then
+  # Homebrew completions
+  if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    autoload -Uz compinit
+    compinit
+  fi
+
+  # Initialize asdf
+  source $(brew --prefix asdf)/asdf.sh
+fi
+
+# Configure zerl
+export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl)"

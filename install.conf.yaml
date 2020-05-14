@@ -1,56 +1,100 @@
-- clean: ['~']
+- clean: ["~"]
+
+- create:
+    - ~/Development
 
 - link:
+    ~/.aliases.zsh: zsh/aliases.zsh
+    ~/.zshrc: zsh/zshrc
+    # ~/Library/Fonts/MonoLisa-Bold.otf: fonts/MonoLisa-Bold.otf
+    # ~/Library/Fonts/MonoLisa-Bold.woff: fonts/MonoLisa-Bold.woff
+    # ~/Library/Fonts/MonoLisa-Bold.woff2: fonts/MonoLisa-Bold.woff2
+    # ~/Library/Fonts/MonoLisa-BoldItalic.otf: fonts/MonoLisa-BoldItalic.otf
+    # ~/Library/Fonts/MonoLisa-BoldItalic.woff: fonts/MonoLisa-BoldItalic.woff
+    # ~/Library/Fonts/MonoLisa-BoldItalic.woff2: fonts/MonoLisa-BoldItalic.woff2
+    # ~/Library/Fonts/MonoLisa-Regular.otf: fonts/MonoLisa-Regular.otf
+    # ~/Library/Fonts/MonoLisa-Regular.woff: fonts/MonoLisa-Regular.woff
+    # ~/Library/Fonts/MonoLisa-Regular.woff2: fonts/MonoLisa-Regular.woff2
+    # ~/Library/Fonts/MonoLisa-RegularItalic.otf: fonts/MonoLisa-RegularItalic.otf
+    # ~/Library/Fonts/MonoLisa-RegularItalic.woff: fonts/MonoLisa-RegularItalic.woff
+    # ~/Library/Fonts/MonoLisa-RegularItalic.woff2: fonts/MonoLisa-RegularItalic.woff2
 
-    ~/.Brewfile: Brewfile
-    ~/.tool-versions: tool-versions
+- brewfile:
+    - macos/Brewfile
 
 - shell:
+    - description: Set shell to zsh
+      command: |
+        if [[ "$(which zsh)" != "$(echo $0)" ]]; then
+          grep -qxF "$(which zsh)" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells
+          chsh -s $(which zsh)
+        fi
 
-  - description: Setup macOS defaults
-    command: |
-      if [[ "$OSTYPE" == "darwin"* ]]; then
-        ./setup-macos.sh
-      fi
+    - description: Install zplug
+      command: |
+        if [[ -d ~/.zplug ]] then
+          cd ~/.zplug
+          git fetch
+          git reset --hard origin/master
+        else
+          git clone https://github.com/zplug/zplug.git ~/.zplug
+        fi
 
-  - description: Hush the last login prompt
-    command: touch ~/.hushlogin
+    - description: Setup macOS defaults
+      command: |
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+          ./macos/setup.sh
+        fi
 
-  - description: Install Homebrew
-    command: |
-      if [[ "$OSTYPE" == "darwin"* ]]; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-      fi
+    - description: Copy fonts
+      command: |
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+          cp -R fonts/. ~/Library/Fonts
+        fi
 
-  - description: Install system Brewfile
-    command: |
-      if [[ "$OSTYPE" == "darwin"* ]]; then
-        brew bundle --global
-      fi
+    - description: Setup Terminal defaults
+      command: |
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+          ./terminal/setup.sh
+        fi
 
-  - description: Set shell to zsh
-    command: |
-      grep -qxF "$(which zsh)" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells
-      chsh -s $(which zsh)
+    - description: Hush the last login prompt
+      command: touch ~/.hushlogin
 
+    - description: Install login items
+      command: |
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+          ./macos/login-items.sh
+        fi
+      stdout: false
 
-  - description: Install asdf plugins
-    command: |
-      asdf plugin list | grep -q erlang || {
-        asdf plugin add erlang
-      }
-      asdf plugin list | grep -q elixir || {
-        asdf plugin add elixir
-      }
-      asdf plugin list | grep -q golang || {
-        asdf plugin add golang
-      }
-      asdf plugin list | grep -q nodejs || {
-        asdf plugin add nodejs
-      }
+    - description: Import asdf nodejs OpenGPG keys
+      command: cd && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
-  - description: Import asdf nodejs OpenGPG keys
-    command: cd && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+    - description: Copy VSCode settings
+      command: |
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+          mkdir -p ~/Library/Application\ Support/Code/User/ && cp vscode/settings.json ~/Library/Application\ Support/Code/User/ && cp vscode/keybindings.json ~/Library/Application\ Support/Code/User/
+        fi
 
-  - description: Install asdf runtimes
-    command: cd && asdf install
+- asdf:
+    - plugin: erlang
+      url: https://github.com/asdf-vm/asdf-erlang.git
+      global: 22.2.5
+      versions:
+        - 22.2.5
+    - plugin: elixir
+      url: https://github.com/asdf-vm/asdf-elixir.git
+      global: 1.10.1
+      versions:
+        - 1.10.1
+    - plugin: nodejs
+      url: https://github.com/asdf-vm/asdf-nodejs.git
+      global: 12.16.3
+      versions:
+        - 12.16.3
+    - plugin: golang
+      url: https://github.com/kennyp/asdf-golang.git
+      global: 1.13.4
+      versions:
+        - 1.13.4

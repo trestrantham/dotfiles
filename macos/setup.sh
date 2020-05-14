@@ -45,12 +45,12 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.1
 
 # Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool false
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool false
 
 # Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool false
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool false
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -113,12 +113,12 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # # Follow the keyboard focus while zoomed in
 # defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
-# # Disable press-and-hold for keys in favor of key repeat
-# defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# Disable press-and-hold for keys
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+# Set fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
@@ -277,10 +277,7 @@ chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
-defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+defaults write com.apple.finder FXInfoPanesExpanded -dict OpenWith -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -491,53 +488,6 @@ defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnab
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-# # Use a modified version of the Solarized Dark theme by default in Terminal.app
-# osascript <<EOD
-
-# tell application "Terminal"
-
-# 	local allOpenedWindows
-# 	local initialOpenedWindows
-# 	local windowID
-# 	set themeName to "Solarized Dark xterm-256color"
-
-# 	(* Store the IDs of all the open terminal windows. *)
-# 	set initialOpenedWindows to id of every window
-
-# 	(* Open the custom theme so that it gets added to the list
-# 	   of available terminal themes (note: this will open two
-# 	   additional terminal windows). *)
-# 	do shell script "open '$HOME/init/" & themeName & ".terminal'"
-
-# 	(* Wait a little bit to ensure that the custom theme is added. *)
-# 	delay 1
-
-# 	(* Set the custom theme as the default terminal theme. *)
-# 	set default settings to settings set themeName
-
-# 	(* Get the IDs of all the currently opened terminal windows. *)
-# 	set allOpenedWindows to id of every window
-
-# 	repeat with windowID in allOpenedWindows
-
-# 		(* Close the additional windows that were opened in order
-# 		   to add the custom theme to the list of terminal themes. *)
-# 		if initialOpenedWindows does not contain windowID then
-# 			close (every window whose id is windowID)
-
-# 		(* Change the theme for the initial opened terminal windows
-# 		   to remove the need to close them in order for the custom
-# 		   theme to be applied. *)
-# 		else
-# 			set current settings of tabs of (every window whose id is windowID) to settings set themeName
-# 		end if
-
-# 	end repeat
-
-# end tell
-
-# EOD
-
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################
@@ -617,23 +567,23 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # # Disable continuous spell checking
 # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
-###############################################################################
-# Kill affected applications                                                  #
-###############################################################################
+# ###############################################################################
+# # Kill affected applications                                                  #
+# ###############################################################################
 
-for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Mail" \
-	"Messages" \
-	"Photos" \
-	"Safari" \
-	"SystemUIServer" \
-	"Terminal"; do
-	killall "${app}" &> /dev/null
-done
+# for app in "Activity Monitor" \
+# 	"Address Book" \
+# 	"Calendar" \
+# 	"cfprefsd" \
+# 	"Contacts" \
+# 	"Dock" \
+# 	"Finder" \
+# 	"Mail" \
+# 	"Messages" \
+# 	"Photos" \
+# 	"Safari" \
+# 	"SystemUIServer" \
+# 	"Terminal"; do
+# 	killall "${app}" &> /dev/null
+# done
 echo "Done. Note that some of these changes require a logout/restart to take effect."

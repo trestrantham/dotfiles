@@ -1,0 +1,96 @@
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
+  "window.zoomLevel": 0,
+  "editor.rulers": [120],
+  "editor.wordWrapColumn": 120,
+  "editor.fontSize": 16,
+  "vim.leader": ",",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "workbench.startupEditor": "newUntitledFile",
+  "npm.packageManager": "yarn",
+  "vim.statusBarColorControl": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#161b1e",
+    "statusBar.noFolderBackground": "#161b1e",
+    "statusBar.debuggingBackground": "#161b1e",
+    "statusBar.foreground": "#E8E8E8"
+  },
+  "vim.statusBarColors.normal": ["#161b1e", "#E8E8E8"],
+  "vim.statusBarColors.insert": ["#161b1e", "#78DCE8"],
+  "vim.statusBarColors.visual": ["#161b1e", "#F19162"],
+  "vim.statusBarColors.visualline": ["#161b1e", "#F19162"],
+  "zenMode.hideStatusBar": false,
+  "editor.cursorBlinking": "phase",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.cursorBlinking": false,
+  "sync.gist": "27edbf93d583a91cbee9a929a382d139",
+  "sync.autoUpload": true,
+  "sync.autoDownload": true,
+  "sync.quietSync": true,
+  "explorer.confirmDelete": false,
+  "editor.tabSize": 2,
+  "coverage-gutters.showLineCoverage": true,
+  "vim.useSystemClipboard": true,
+  "debug.node.autoAttach": "off",
+  "explorer.confirmDragAndDrop": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "liveshare.featureSet": "insiders",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.rendererType": "dom",
+  "workbench.colorTheme": "Monokai Pro (Filter Machine)",
+  "gitlens.codeLens.enabled": false,
+  "git.autofetch": true,
+  "tslint.packageManager": "yarn",
+  "prettier.printWidth": 120,
+  "prettier.requireConfig": true,
+  "git.enableSmartCommit": true,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "vim.enableNeovim": true,
+  "eslint.format.enable": true,
+  "eslint.packageManager": "yarn",
+  "go.useLanguageServer": true,
+  "html.format.extraLiners": "",
+  "sync.forceDownload": true,
+  "terminal.explorerKind": "external",
+  "editor.fontFamily": "MonoLisa, FiraCode, Menlo, Monaco, 'Courier New', monospace",
+}
