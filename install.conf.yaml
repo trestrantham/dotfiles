@@ -6,18 +6,6 @@
 - link:
     ~/.aliases.zsh: zsh/aliases.zsh
     ~/.zshrc: zsh/zshrc
-    # ~/Library/Fonts/MonoLisa-Bold.otf: fonts/MonoLisa-Bold.otf
-    # ~/Library/Fonts/MonoLisa-Bold.woff: fonts/MonoLisa-Bold.woff
-    # ~/Library/Fonts/MonoLisa-Bold.woff2: fonts/MonoLisa-Bold.woff2
-    # ~/Library/Fonts/MonoLisa-BoldItalic.otf: fonts/MonoLisa-BoldItalic.otf
-    # ~/Library/Fonts/MonoLisa-BoldItalic.woff: fonts/MonoLisa-BoldItalic.woff
-    # ~/Library/Fonts/MonoLisa-BoldItalic.woff2: fonts/MonoLisa-BoldItalic.woff2
-    # ~/Library/Fonts/MonoLisa-Regular.otf: fonts/MonoLisa-Regular.otf
-    # ~/Library/Fonts/MonoLisa-Regular.woff: fonts/MonoLisa-Regular.woff
-    # ~/Library/Fonts/MonoLisa-Regular.woff2: fonts/MonoLisa-Regular.woff2
-    # ~/Library/Fonts/MonoLisa-RegularItalic.otf: fonts/MonoLisa-RegularItalic.otf
-    # ~/Library/Fonts/MonoLisa-RegularItalic.woff: fonts/MonoLisa-RegularItalic.woff
-    # ~/Library/Fonts/MonoLisa-RegularItalic.woff2: fonts/MonoLisa-RegularItalic.woff2
 
 - brewfile:
     - macos/Brewfile
@@ -55,7 +43,7 @@
     - description: Setup Terminal defaults
       command: |
         if [[ "$OSTYPE" == "darwin"* ]]; then
-          ./terminal/setup.sh
+          ./apps/terminal/setup.sh
         fi
 
     - description: Hush the last login prompt
@@ -74,7 +62,13 @@
     - description: Copy VSCode settings
       command: |
         if [[ "$OSTYPE" == "darwin"* ]]; then
-          mkdir -p ~/Library/Application\ Support/Code/User/ && cp vscode/settings.json ~/Library/Application\ Support/Code/User/ && cp vscode/keybindings.json ~/Library/Application\ Support/Code/User/
+          mkdir -p ~/Library/Application\ Support/Code/User/ && cp apps/vscode/settings.json ~/Library/Application\ Support/Code/User/ && cp apps/vscode/keybindings.json ~/Library/Application\ Support/Code/User/
+        fi
+
+    - description: Setup iStat Menus
+      command: |
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+          ./apps/istatmenus/setup.sh
         fi
 
 - asdf:
@@ -98,3 +92,50 @@
       global: 1.13.4
       versions:
         - 1.13.4
+
+- link:
+    ~/Library/Preferences/com.runningwithcrayons.Alfred.plist:
+      path: apps/alfred/com.runningwithcrayons.Alfred.plist
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'
+    ~/Library/Application\ Support/Alfred/Alfred.alfredpreferences:
+      path: apps/alfred/Alfred.alfredpreferences
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'
+    ~/Library/Preferences/com.surteesstudios.Bartender.plist:
+      path: apps/bartender/com.surteesstudios.Bartender.plist
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'
+    ~/Library/Preferences/com.choosyosx.Choosy.plist:
+      path: apps/choosy/com.choosyosx.Choosy.plist
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'
+    ~/Library/Application\ Support/Choosy/behaviours.plist:
+      path: apps/choosy/behaviours.plist
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'
+    ~/Library/Preferences/com.kapeli.dashdoc.plist:
+      path: apps/dash/com.kapeli.dashdoc.plist
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'
+    ~/Library/Preferences/com.mizage.Divvy.plist:
+      path: apps/divvy/com.mizage.Divvy.plist
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'
+    ~/Library/Preferences/com.bjango.istatmenus.status.plist:
+      path: apps/istatmenus/com.bjango.istatmenus.status.plist
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'
+    ~/Library/Preferences/com.bjango.istatmenus6.extras.plist:
+      path: apps/istatmenus/com.bjango.istatmenus6.extras.plist
+      create: true
+      force: true
+      if: '[[ "$OSTYPE" == "darwin"* ]]'

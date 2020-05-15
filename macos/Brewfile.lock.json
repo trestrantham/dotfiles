@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "2997a377d214b56d9f5ee864bea6b5c7f2581ca6"
+        "revision": "e2cf31c4691b00921066a078670a97706dbcc165"
       }
     },
     "brew": {
@@ -263,6 +263,60 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "choosy": {
+        "version": "2.1",
+        "options": {
+          "full_name": "choosy",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
+      },
+      "dash": {
+        "version": "5.1.5",
+        "options": {
+          "full_name": "dash",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
+      },
+      "daisydisk": {
+        "version": "4.10",
+        "options": {
+          "full_name": "daisydisk",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
+      },
+      "exodus": {
+        "version": "20.5.10",
+        "options": {
+          "full_name": "exodus",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
+      },
+      "private-internet-access": {
+        "version": "2.0.2-04704",
+        "options": {
+          "full_name": "private-internet-access",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
+      },
+      "rescuetime": {
+        "version": "2.15.0.1",
+        "options": {
+          "full_name": "rescuetime",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     },
     "mas": {
@@ -313,7 +367,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.2.16",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "5326934c8388b0eee5ee9dc4807e79c156d19534",
+        "Homebrew/homebrew-core": "defc021c41115ee0370c8d0c46ba8119e0a8bf17",
         "CLT": "11.4.1.0.1.1586360307",
         "Xcode": "11.4.1",
         "macOS": "10.15.4"
