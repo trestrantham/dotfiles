@@ -98,44 +98,53 @@
       path: apps/alfred/com.runningwithcrayons.Alfred.plist
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Application\ Support/Alfred/Alfred.alfredpreferences:
       path: apps/alfred/Alfred.alfredpreferences
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Preferences/com.surteesstudios.Bartender.plist:
       path: apps/bartender/com.surteesstudios.Bartender.plist
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Preferences/com.choosyosx.Choosy.plist:
       path: apps/choosy/com.choosyosx.Choosy.plist
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Application\ Support/Choosy/behaviours.plist:
       path: apps/choosy/behaviours.plist
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Preferences/com.kapeli.dashdoc.plist:
       path: apps/dash/com.kapeli.dashdoc.plist
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Preferences/com.mizage.Divvy.plist:
       path: apps/divvy/com.mizage.Divvy.plist
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Preferences/com.bjango.istatmenus.status.plist:
       path: apps/istatmenus/com.bjango.istatmenus.status.plist
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Preferences/com.bjango.istatmenus6.extras.plist:
       path: apps/istatmenus/com.bjango.istatmenus6.extras.plist
       create: true
       force: true
+      relink: true
       if: '[[ "$OSTYPE" == "darwin"* ]]'
