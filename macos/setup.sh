@@ -277,7 +277,7 @@ chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
-defaults write com.apple.finder FXInfoPanesExpanded -dict OpenWith -bool true
+# defaults write com.apple.finder FXInfoPanesExpanded -dict OpenWith -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
