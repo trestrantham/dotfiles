@@ -11,6 +11,7 @@ brew 'nvim'
 brew 'postgresql'
 brew 'openssl'
 brew 'redis'
+brew 'yarn'
 brew 'zsh'
 
 cask_args appdir: '/Applications'
