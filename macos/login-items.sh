@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
 login_items=(
+  "1Password 7.app"
   "Alfred 4.app"
   "Bartender 3.app"
+  "Choosy.app"
   "Divvy.app"
-  "Dropbox.app"
+  "Neptunes.app"
+  "RescueTime.app"
   "Rocket.app"
 )
 
