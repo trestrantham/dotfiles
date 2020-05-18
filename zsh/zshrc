@@ -16,7 +16,8 @@ zplug "zsh-users/zsh-history-substring-search", defer:3
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
-    echo; zplug install
+    echo
+    zplug install
   fi
 fi
 
@@ -84,3 +85,6 @@ fi
 
 # Configure zerl
 export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl)"
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/tres/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH

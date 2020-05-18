@@ -1,10 +1,12 @@
 tap 'homebrew/cask-fonts'
+tap 'heroku/brew'
 
 brew 'asdf'
 brew 'coreutils'
 brew 'fzf'
 brew 'git'
 brew 'gpg'
+brew 'heroku'
 brew 'mas'
 brew 'mysql'
 brew 'nvim'
