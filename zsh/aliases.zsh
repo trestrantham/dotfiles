@@ -17,3 +17,7 @@ alias f='fzf'
 # Git
 alias g='git'
 alias gco='git checkout'
+alias gpr='git pull --rebase'
+alias gcom='git checkout master'
+alias gempty='git commit --allow-empty -m "Empty commit"'
+alias gclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'

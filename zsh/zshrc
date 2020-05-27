@@ -88,3 +88,10 @@ export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openss
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/tres/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
+
+# setup spaceship prompt
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_12HR=true
+SPACESHIP_CHAR_SYMBOL=λ
+SPACESHIP_CHAR_SUFFIX=" "
