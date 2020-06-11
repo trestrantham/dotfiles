@@ -8,6 +8,9 @@
     ~/.zshrc: zsh/zshrc
 
 - shell:
+    - description: Install submodules
+      command: git submodule update --init
+      
     - description: Install Homebrew
       command: |
         if [[ "$OSTYPE" == "darwin"* ]]; then

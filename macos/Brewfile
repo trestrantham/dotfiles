@@ -1,3 +1,4 @@
+tap 'homebrew/cask-drivers'
 tap 'homebrew/cask-fonts'
 tap 'heroku/brew'
 
@@ -26,12 +27,15 @@ cask 'daisydisk'
 cask 'discord'
 cask 'exodus' 
 cask 'insomnia'
+cask 'istat-menus'
 cask 'notion'
 cask 'private-internet-access'
 cask 'rescuetime'
 cask 'rocket'
 cask 'spotify'
 cask 'tableplus'
+cask 'visual-studio-code'
+cask 'logitech-options'
 
 cask 'font-fira-code'
 
