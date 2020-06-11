@@ -7,6 +7,13 @@
     ~/.aliases.zsh: zsh/aliases.zsh
     ~/.zshrc: zsh/zshrc
 
+- shell:
+    - description: Install Homebrew
+      command: |
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        fi
+
 - brewfile:
     - macos/Brewfile
 
