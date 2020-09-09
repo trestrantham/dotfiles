@@ -21,3 +21,7 @@ alias gpr='git pull --rebase'
 alias gcom='git checkout master'
 alias gempty='git commit --allow-empty -m "Empty commit"'
 alias gclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
+
+# Code
+alias d='docker-compose run --rm app'
+alias dmix='docker-compose run --rm app mix'

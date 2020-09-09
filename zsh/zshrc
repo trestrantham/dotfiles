@@ -11,6 +11,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "johnhamelink/env-zsh", from:github
 
 # Check for uninstalled plugins.
 if ! zplug check --verbose; then
@@ -51,7 +52,9 @@ export EDITOR=nvim
 
 source $HOME/.aliases.zsh
 
+# Set up PATH
 export PATH=./bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:/opt/bin:$PATH
+export PATH="$PATH:$(yarn global bin)"
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="exfxcxdxbxagadabagaxad"
