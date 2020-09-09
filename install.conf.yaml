@@ -21,21 +21,28 @@
     - macos/Brewfile
 
 - shell:
-    - description: Set shell to zsh
-      command: |
-        if [[ "$(which zsh)" != "$(echo $0)" ]]; then
-          grep -qxF "$(which zsh)" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells
-          chsh -s $(which zsh)
-        fi
-
     - description: Install zplug
       command: |
-        if [[ -d ~/.zplug ]] then
+        if [[ -d ~/.zplug ]]; then
           cd ~/.zplug
           git fetch
           git reset --hard origin/master
         else
           git clone https://github.com/zplug/zplug.git ~/.zplug
+        fi
+
+    - description: Set shell to zsh (default)
+      command: |
+        if [[ "$(which zsh)" != "$(echo $0)" ]] && [[ "$OSTYPE" != "linux-musl"* ]]; then
+          grep -qxF "$(which zsh)" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells
+          chsh -s $(which zsh)
+        fi
+
+    - description: Set shell to zsh (Alpine)
+      command: |
+        if [[ "$OSTYPE" == "linux-musl"* ]]; then
+          grep -qxF "$(which zsh)" /etc/shells || echo "$(which zsh)" | tee -a /etc/shells
+          $(which zsh)
         fi
 
     - description: Setup macOS defaults
