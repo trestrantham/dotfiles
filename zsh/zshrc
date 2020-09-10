@@ -54,7 +54,10 @@ source $HOME/.aliases.zsh
 
 # Set up PATH
 export PATH=./bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:/opt/bin:$PATH
-export PATH="$PATH:$(yarn global bin)"
+
+if [ -x "$(command -v yarn)" ]; then
+  export PATH="$PATH:$(yarn global bin)"
+fi
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="exfxcxdxbxagadabagaxad"
@@ -84,10 +87,10 @@ if [ -x "$(command -v brew)" ]; then
 
   # Initialize asdf
   source $(brew --prefix asdf)/asdf.sh
-fi
 
-# Configure zerl
-export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl)"
+  # Configure zerl
+  export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl)"
+fi
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/tres/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
