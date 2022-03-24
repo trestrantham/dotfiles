@@ -1,3 +1,5 @@
+export FPATH="/usr/local/share/zsh/functions:$FPATH"
+
 source ~/.zplug/init.zsh
 
 PURE_GIT_PULL=0
@@ -11,7 +13,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
-zplug "johnhamelink/env-zsh", from:github
+zplug "cpitt/zsh-dotenv", as:plugin
 
 # Check for uninstalled plugins.
 if ! zplug check --verbose; then
@@ -101,3 +103,12 @@ SPACESHIP_TIME_SHOW=true
 SPACESHIP_TIME_12HR=true
 SPACESHIP_CHAR_SYMBOL=λ
 SPACESHIP_CHAR_SUFFIX=" "
+
+# IEx history
+ERL_AFLAGS="-kernel shell_history enabled"
+# Created by `pipx` on 2021-06-20 04:04:19
+export PATH="$PATH:/Users/tres/.local/bin"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
