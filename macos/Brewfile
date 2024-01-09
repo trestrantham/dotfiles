@@ -18,35 +18,23 @@ brew 'yarn'
 brew 'zsh'
 
 cask_args appdir: '/Applications'
-cask 'alfred'
 cask 'bartender'
-cask 'brave-browser'
-cask 'choosy'
-cask 'dash'
 cask 'daisydisk'
 cask 'discord'
-cask 'exodus' 
 cask 'insomnia'
 cask 'istat-menus'
 cask 'notion'
 cask 'private-internet-access'
-cask 'rescuetime'
 cask 'rocket'
 cask 'spotify'
 cask 'tableplus'
 cask 'visual-studio-code'
-cask 'logitech-options'
+# cask 'logitech-options'
 
 cask 'font-fira-code'
 
-mas '1Password 7', id: 1333542190
-mas 'Adblock Plus', id: 1432731683
 mas 'ColorSlurp', id: 1287239339
 mas 'Deliveries', id: 924726344
-mas 'Divvy', id: 413857545
-mas 'Fantastical', id: 975937182
 mas 'Neptunes', id: 1006739057
 mas 'Slack', id: 803453959
-mas 'Telegram', id: 747648890
 mas 'The Unarchiver', id: 425424353
-mas 'Tweetbot', id: 1384080005

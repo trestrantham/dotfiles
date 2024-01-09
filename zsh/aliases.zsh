@@ -6,7 +6,8 @@ alias nomics='cd ~/Development/nomics'
 alias recursive='cd ~/Development/recursive'
 
 # Nav
-alias ll='ls -alF'
+alias ls='ls -alF'
+alias ll='ls'
 alias la='ls -A'
 alias vim='nvim'
 
