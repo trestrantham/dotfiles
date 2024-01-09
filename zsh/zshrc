@@ -7,7 +7,6 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=14"
 
 zplug "mafredri/zsh-async"
-# zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
@@ -57,10 +56,6 @@ source $HOME/.aliases.zsh
 # Set up PATH
 export PATH=./bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:/opt/bin:$PATH
 
-if [ -x "$(command -v yarn)" ]; then
-  export PATH="$PATH:$(yarn global bin)"
-fi
-
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="exfxcxdxbxagadabagaxad"
 export LS_COLORS='di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=30;46:cd=0;43:su=30;41:sg=0;46:tw=30;40:ow=30;43:'
@@ -86,32 +81,48 @@ if [ -x "$(command -v brew)" ]; then
     autoload -Uz compinit
     compinit
   fi
-
-  # Initialize asdf
-  source $(brew --prefix asdf)/asdf.sh
-
-  # Configure zerl
-  export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl)"
 fi
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/tres/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
 
 # setup spaceship prompt
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_TIME_12HR=true
 SPACESHIP_CHAR_SYMBOL=λ
+SPACESHIP_CHAR_PREFIX=""
 SPACESHIP_CHAR_SUFFIX=" "
 
 # IEx history
-ERL_AFLAGS="-kernel shell_history enabled"
+export ERL_AFLAGS="-kernel shell_history enabled"
+export ELIXIR_ERL_OPTIONS="-kernel shell_history enabled"
 # Created by `pipx` on 2021-06-20 04:04:19
 export PATH="$PATH:/Users/tres/.local/bin"
 
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+# openssl config
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig:/opt/homebrew/opt/librdkafka/lib/pkgconfig"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+
+# asdf
+export PATH="$PATH:/Users/tres/.asdf/shims"
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+# foundry
+export PATH="$PATH:/Users/tres/.foundry/bin"
+
+# yarn
+if [ -x "$(command -v yarn)" ]; then
+  export PATH="$PATH:$(yarn global bin)"
+fi
+
 alias cdb='cd ~/Development/brassica/web' 
 speccheck() {
   cdb
