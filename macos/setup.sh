@@ -13,12 +13,12 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Capture computer name from terminal
-echo -n "Enter the name for this computer (Hades) [ENTER]: "
+echo -n "Enter the name for this computer (Hermes) [ENTER]: "
 
 read name
 
 if [ "$name" == "" ]; then
-	name="Hades"
+	name="Hermes"
 fi
 
 ###############################################################################

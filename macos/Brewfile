@@ -1,4 +1,4 @@
-tap 'homebrew/cask-drivers'
+# tap 'homebrew/cask-drivers'
 tap 'homebrew/cask-fonts'
 tap 'heroku/brew'
 
@@ -11,7 +11,7 @@ brew 'heroku'
 brew 'mas'
 brew 'mysql'
 brew 'nvim'
-brew 'postgresql'
+brew 'postgresql@14'
 brew 'openssl'
 brew 'redis'
 brew 'yarn'
@@ -34,7 +34,7 @@ cask 'visual-studio-code'
 cask 'font-fira-code'
 
 mas 'ColorSlurp', id: 1287239339
-mas 'Deliveries', id: 924726344
+# mas 'Deliveries', id: 924726344
 mas 'Neptunes', id: 1006739057
 mas 'Slack', id: 803453959
 mas 'The Unarchiver', id: 425424353

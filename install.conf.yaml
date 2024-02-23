@@ -91,64 +91,23 @@
 - asdf:
     - plugin: erlang
       url: https://github.com/asdf-vm/asdf-erlang.git
-      global: 22.2.5
+      global: 26.2.2
       versions:
-        - 22.2.5
+        - 26.2.2
     - plugin: elixir
       url: https://github.com/asdf-vm/asdf-elixir.git
-      global: 1.10.1
+      global: 1.16.1
       versions:
-        - 1.10.1
+        - 1.16.1
     - plugin: nodejs
       url: https://github.com/asdf-vm/asdf-nodejs.git
-      global: 12.16.3
+      global: 21.6.2
       versions:
-        - 12.16.3
-    - plugin: golang
-      url: https://github.com/kennyp/asdf-golang.git
-      global: 1.13.4
-      versions:
-        - 1.13.4
+        - 21.16.2
 
 - link:
-    ~/Library/Preferences/com.runningwithcrayons.Alfred.plist:
-      path: apps/alfred/com.runningwithcrayons.Alfred.plist
-      create: true
-      force: true
-      relink: true
-      if: '[[ "$OSTYPE" == "darwin"* ]]'
-    ~/Library/Application\ Support/Alfred/Alfred.alfredpreferences:
-      path: apps/alfred/Alfred.alfredpreferences
-      create: true
-      force: true
-      relink: true
-      if: '[[ "$OSTYPE" == "darwin"* ]]'
     ~/Library/Preferences/com.surteesstudios.Bartender.plist:
       path: apps/bartender/com.surteesstudios.Bartender.plist
-      create: true
-      force: true
-      relink: true
-      if: '[[ "$OSTYPE" == "darwin"* ]]'
-    ~/Library/Preferences/com.choosyosx.Choosy.plist:
-      path: apps/choosy/com.choosyosx.Choosy.plist
-      create: true
-      force: true
-      relink: true
-      if: '[[ "$OSTYPE" == "darwin"* ]]'
-    ~/Library/Application\ Support/Choosy/behaviours.plist:
-      path: apps/choosy/behaviours.plist
-      create: true
-      force: true
-      relink: true
-      if: '[[ "$OSTYPE" == "darwin"* ]]'
-    ~/Library/Preferences/com.kapeli.dashdoc.plist:
-      path: apps/dash/com.kapeli.dashdoc.plist
-      create: true
-      force: true
-      relink: true
-      if: '[[ "$OSTYPE" == "darwin"* ]]'
-    ~/Library/Preferences/com.mizage.Divvy.plist:
-      path: apps/divvy/com.mizage.Divvy.plist
       create: true
       force: true
       relink: true
