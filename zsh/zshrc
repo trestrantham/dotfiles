@@ -92,10 +92,8 @@ SPACESHIP_CHAR_PREFIX=""
 SPACESHIP_CHAR_SUFFIX=" "
 
 # IEx history
-export ERL_AFLAGS="-kernel shell_history enabled"
-export ELIXIR_ERL_OPTIONS="-kernel shell_history enabled"
-# Created by `pipx` on 2021-06-20 04:04:19
-export PATH="$PATH:/Users/tres/.local/bin"
+export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
+export ELIXIR_ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 
 # tabtab source for packages
 # uninstall by removing these lines
